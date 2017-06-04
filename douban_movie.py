@@ -49,5 +49,8 @@ def main(offest):
 
 
 if __name__ == '__main__':
+    p = Pool()
     for i in range(10):
-        main(i*25)
+        p.apply_async(main,args=(i*25,))
+    p.close()
+    p.join()
